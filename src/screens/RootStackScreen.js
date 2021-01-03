@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     lineHeight: 53,
     letterSpacing: 0,
     textAlign: 'center',
-
+    flex: 1,
   },
 });
 export default RootStackScreen;

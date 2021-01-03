@@ -1,105 +1,180 @@
 import React from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
-  Button,
+  Text,
   Image,
+  StyleSheet,
+  useWindowDimensions,
   KeyboardAvoidingView,
   TextInput,
-  TouchableWithoutFeedback,
-  SafeAreaView,
-  Keyboard,
-  Platform,
+  TouchableOpacity,
 } from 'react-native';
-import {Input} from '../components/Input';
-const SignInScreen = ({navigation}) => {
+import CheckBox from '@react-native-community/checkbox';
+const SignInScreen = () => {
+  const windowWidth = useWindowDimensions().width;
+  const onPress = () => {};
   return (
-    <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          resizeMode="contain"
-          source={require('../assets/logo.png')}
-        />
+    //First Part includes logo
+    //Second View Part includes input and forgotten password
+    //Third View part includes Signup
+
+    <View style={{flex: 1, backgroundColor: '#FCF2F0'}}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#FCF2F0',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Image style={styles.logo} source={require('../assets/logo.png')} />
       </View>
 
-      <KeyboardAvoidingView style={styles.keyboard}>
-        <View style={styles.window}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#FCF2F0',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <KeyboardAvoidingView
+          style={{
+            flex: 1,
+            width: windowWidth,
+            backgroundColor: '#FCF2F0',
+            textAlignVertical: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <TextInput
-            style={styles.input}
             placeholder="Öğrenci Numarası"
             placeholderTextColor="black"
-            returnKeyType="next"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
+            style={{
+              textAlign: 'center',
+              fontSize: 30,
+              width: windowWidth - 100,
+              height: 60,
+              borderRadius: 500,
+              backgroundColor: '#D1E5F8',
+              textAlignVertical: 'center',
+            }}
           />
-        </View>
-        <View style={styles.window}>
+        </KeyboardAvoidingView>
+        <KeyboardAvoidingView
+          style={{
+            flex: 1,
+            width: windowWidth,
+            backgroundColor: '#FCF2F0',
+            textAlignVertical: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <TextInput
-            style={styles.input}
             placeholder="Şifre"
             placeholderTextColor="black"
-            returnKeyType="go"
             secureTextEntry
+            style={{
+              textAlign: 'center',
+              fontSize: 30,
+              width: windowWidth - 100,
+              height: 60,
+              borderRadius: 500,
+              backgroundColor: '#D1E5F8',
+              textAlignVertical: 'center',
+            }}
           />
-        </View>
+        </KeyboardAvoidingView>
 
-      </KeyboardAvoidingView>
+        <TouchableOpacity
+          onPress={onPress()}
+          style={{
+            alignItems: 'center',
+            width: windowWidth / 2,
+            right: 100,
+            backgroundColor: '#FCF2F0',
+          }}>
+          <Text
+            style={{fontSize: 20, fontWeight: 'bold', fontFamily: 'Quicksand'}}>
+            Şifremi Unuttum
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={{flex: 1, backgroundColor: 'steelblue'}}>
+        <View
+          style={{
+            alignItems: 'center',
+            width: windowWidth,
+            flex: 5,
+            backgroundColor: '#FCF2F0',
+            justifyContent: 'center',
+          }}>
+          <TouchableOpacity>
+            <Text
+              onPress={onPress()}
+              style={{
+                fontSize: 30,
+                textAlign: 'center',
+                textAlignVertical: 'center',
+                height: 60,
+                borderRadius: 500,
+                backgroundColor: '#F47325',
+                width: windowWidth - 100,
+                alignItems: 'center',
+              }}>
+              Giriş Yap
+            </Text>
+          </TouchableOpacity>
+          <View style={{flexDirection: 'row', fontSize: 25, right: 60}}>
+            <CheckBox disabled={false} />
+            <Text
+              style={{
+                textAlign: 'center',
+                textAlignVertical: 'center',
+                fontSize: 22,
+              }}>
+              Oturumumu Açık Tut
+            </Text>
+          </View>
+        </View>
+        <View
+          onPress={onPress()}
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: windowWidth,
+            flex: 2,
+            backgroundColor: '#FCF2F0',
+            flexDirection: 'row',
+            textAlign: 'center',
+            textAlignVertical: 'center',
+          }}>
+          <Text
+            style={{
+              textAlign: 'center',
+              textAlignVertical: 'center',
+              fontSize: 25,
+            }}>
+            Kaydınız Yok Mu?
+          </Text>
+          <TouchableOpacity>
+            <Text style={styles.signUp}> Kaydol </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };
-
-export default SignInScreen;
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FCF2F0',
-    zIndex: 2,
-    flexDirection: 'column',
-  },
   logo: {
-    top: 15,
-    width: 207,
-    height: 207.1,
-    justifyContent: 'center',
-    position: 'absolute',
+    width: 200,
+    height: 200.1,
   },
-  keyboard: {
-    //margin: 20,
-    marginLeft: 20,
-    padding: 20,
-    alignSelf: 'stretch',
+  signUp: {
     textAlign: 'center',
-    marginVertical: 150,
-    paddingHorizontal:28
-  },
-  window: {
-    marginTop: 25,
-    backgroundColor: '#D1E5F8',
-    width: 315,
-    height: 70,
-    padding: 5,
-    borderRadius: 50,
-    color: 'black',
-    marginVertical: 8,
-    top: 0,
-    justifyContent: 'center',
-    textAlign: 'center',
-
-  },
-  logoContainer: {
-    alignItems: 'center',
-    flexGrow: 1,
-    justifyContent: 'center',
-  },
-  input: {
-    fontSize: 35,
-    justifyContent: 'center',
-    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 });
+
+export default SignInScreen;
