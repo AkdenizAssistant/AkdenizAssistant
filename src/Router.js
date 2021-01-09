@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import RootStackScreen from './screens/RootStackScreen';
 import MainTabScreen from './screens/MainTabScreen';
 import {StyleSheet, Text} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context/src/SafeAreaContext';
 const Stack = createStackNavigator();
 
 function Router() {
@@ -12,10 +13,12 @@ function Router() {
     return <Text style={styles.title}>Akdeniz Asistan</Text>;
   }
   return (
-    <NavigationContainer>
-      {/*<RootStackScreen />*/}
-      <MainTabScreen />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        {/*<RootStackScreen />*/}
+        <MainTabScreen />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 const styles = StyleSheet.create({
