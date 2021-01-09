@@ -8,7 +8,7 @@ import HomeStackScreen from './HomeStackScreen';
 const HomeStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function MainTabScreen() {
+const MainTabScreen = ({navigation}) => {
   const windowWidth = useWindowDimensions().width;
   const insets = useSafeArea();
   return (
@@ -29,7 +29,7 @@ export default function MainTabScreen() {
         },
         height: 60 + insets.bottom,
         showLabel: false,
-        activeBackgroundColor:'rgba(244, 115, 37, 0.81)',
+        activeBackgroundColor: 'rgba(244, 115, 37, 0.81)',
         inactiveBackgroundColor: '#F47325',
       }}>
       <Tab.Screen
@@ -44,7 +44,7 @@ export default function MainTabScreen() {
           tabBarLabel: 'refectory',
           tabBarIcon: () => (
             <Image
-              style={{height: 40, width:40}}
+              style={{height: 40, width: 40}}
               source={require('../assets/homePageIcon.png')}
             />
           ),
@@ -58,7 +58,7 @@ export default function MainTabScreen() {
           tabBarLabel: 'refectory',
           tabBarIcon: () => (
             <Image
-              style={{height: 40, width:40}}
+              style={{height: 40, width: 40}}
               source={require('../assets/refectoryIcon.png')}
             />
           ),
@@ -72,7 +72,7 @@ export default function MainTabScreen() {
           tabBarLabel: 'refectory',
           tabBarIcon: () => (
             <Image
-              style={{height: 40, width:40}}
+              style={{height: 40, width: 40}}
               source={require('../assets/lecturersIcon.png')}
             />
           ),
@@ -86,7 +86,7 @@ export default function MainTabScreen() {
           tabBarLabel: 'refectory',
           tabBarIcon: () => (
             <Image
-              style={{height: 40, width:40}}
+              style={{height: 40, width: 40}}
               source={require('../assets/advertisingIcon.png')}
             />
           ),
@@ -94,4 +94,5 @@ export default function MainTabScreen() {
       />
     </Tab.Navigator>
   );
-}
+};
+export default MainTabScreen;

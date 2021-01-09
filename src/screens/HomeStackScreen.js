@@ -1,17 +1,9 @@
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
 import HeaderBar from '../components/HeaderBar';
-
+import HomeScreen from './HomeScreen';
+import {createStackNavigator} from '@react-navigation/stack';
 const HomeStack = createStackNavigator();
 
-const SettingsScreen = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-};
 const HomeStackScreen = ({navigation}) => (
   <HomeStack.Navigator
     screenOptions={{
@@ -25,14 +17,7 @@ const HomeStackScreen = ({navigation}) => (
       },
       headerTitle: (props) => <HeaderBar {...props} />,
     }}>
-    <HomeStack.Screen name="Home" component={SettingsScreen} />
-    <HomeStack.Screen
-      name="refectory"
-      component={SettingsScreen}
-      options={{
-        title: 'Ooverview',
-      }}
-    />
+    <HomeStack.Screen name="Home" component={HomeScreen} />
   </HomeStack.Navigator>
 );
 
