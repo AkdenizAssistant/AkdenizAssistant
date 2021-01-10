@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {useSafeArea} from 'react-native-safe-area-context';
 import HomeStackScreen from './HomeStackScreen';
 import RefectoryStackScreen from './RefectoryStackScreen';
+import LecturesStackScreen from "./LecturesStackScreen";
 
 const HomeStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -68,7 +69,7 @@ const MainTabScreen = ({navigation}) => {
       <Tab.Screen
         name="lectures"
         barStyle={{textAlign: 'center'}}
-        component={HomeStackScreen}
+        component={LecturesStackScreen}
         options={{
           tabBarLabel: 'refectory',
           tabBarIcon: () => (
