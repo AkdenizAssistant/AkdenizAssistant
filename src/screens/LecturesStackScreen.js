@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HeaderBar from '../components/HeaderBar';
+import LecturesScreen from './LecturesScreen';
 const LecturesStack = createStackNavigator();
 
 const RefectoryStackScreen = ({navigation}) => (
@@ -16,7 +17,7 @@ const RefectoryStackScreen = ({navigation}) => (
       },
       headerTitle: (props) => <HeaderBar {...props} />,
     }}>
-    <LecturesStack.Screen name="RefectoryScreen" component={} />
+    <LecturesStack.Screen name="LecturesScreen" component={LecturesScreen} />
   </LecturesStack.Navigator>
 );
 
