@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useSafeArea} from 'react-native-safe-area-context';
 import HomeStackScreen from './HomeStackScreen';
+import RefectoryStackScreen from './RefectoryStackScreen';
 
 const HomeStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,7 +54,7 @@ const MainTabScreen = ({navigation}) => {
       <Tab.Screen
         name="refectory"
         barStyle={{backgroundColor: '#D1E5F8', textAlign: 'center'}}
-        component={HomeStackScreen}
+        component={RefectoryStackScreen}
         options={{
           tabBarLabel: 'refectory',
           tabBarIcon: () => (

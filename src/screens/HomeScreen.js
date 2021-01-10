@@ -6,7 +6,6 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import HomeBox from '../components/HomeBox';
 
 const HomeScreen = ({navigation}) => {
   const windowWidth = useWindowDimensions().width;
