@@ -6,6 +6,7 @@ import {useSafeArea} from 'react-native-safe-area-context';
 import HomeStackScreen from './HomeStackScreen';
 import RefectoryStackScreen from './RefectoryStackScreen';
 import LecturesStackScreen from "./LecturesStackScreen";
+import AdvertisingStackScreen from "./AdvertisingStackScreen";
 
 const HomeStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -83,7 +84,7 @@ const MainTabScreen = ({navigation}) => {
       <Tab.Screen
         name="advertisement"
         barStyle={{textAlign: 'center'}}
-        component={HomeStackScreen}
+        component={AdvertisingStackScreen}
         options={{
           tabBarLabel: 'refectory',
           tabBarIcon: () => (
