@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HeaderBar from '../components/HeaderBar';
+import AdvertisingScreen from './AdvertisingScreen';
 const AdvertisingStack = createStackNavigator();
 
 const AdvertisingStackScreen = ({navigation}) => (
@@ -16,7 +17,10 @@ const AdvertisingStackScreen = ({navigation}) => (
       },
       headerTitle: (props) => <HeaderBar {...props} />,
     }}>
-    <AdvertisingStack.Screen name="" component={} />
+    <AdvertisingStack.Screen
+      name="advertisingScreen"
+      component={AdvertisingScreen}
+    />
   </AdvertisingStack.Navigator>
 );
 
