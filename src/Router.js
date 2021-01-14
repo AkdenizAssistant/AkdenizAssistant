@@ -18,12 +18,12 @@ function Router() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Drawer.Navigator
-          drawerContent={(props) => <DrawerContent {...props} />}>
-          <Drawer.Screen name="Main" component={MainTabScreen} />
-        </Drawer.Navigator>
+        {/*<Drawer.Navigator*/}
+        {/*  drawerContent={(props) => <DrawerContent {...props} />}>*/}
+        {/*  <Drawer.Screen name="Main" component={MainTabScreen} />*/}
+        {/*</Drawer.Navigator>*/}
 
-        {/*<RootStackScreen />*/}
+        <RootStackScreen />
         {/*<MainTabScreen />*/}
       </NavigationContainer>
     </SafeAreaProvider>

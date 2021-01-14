@@ -13,28 +13,36 @@ import CheckBox from '@react-native-community/checkbox';
 const SignInScreen = () => {
   const windowWidth = useWindowDimensions().width;
   const onPress = () => {};
+  const [isFocusedTextInput, setIsFocusedTextInput] = React.useState(false);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFocusedTextInput(false);
+    }, 50000);
+  }, []);
   return (
     //First Part includes logo
     //Second View Part includes input and forgotten password
     //Third View part includes Signup
 
     <View style={{flex: 1, backgroundColor: '#FCF2F0'}}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#FCF2F0',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Image style={styles.logo} source={require('../assets/logo.png')} />
-      </View>
+      {isFocusedTextInput ? null : (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: '#FCF2F0',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image style={styles.logo} source={require('../assets/logo.png')} />
+        </View>
+      )}
 
       <View
         style={{
           flex: 1,
           backgroundColor: '#FCF2F0',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-evenly',
         }}>
         <KeyboardAvoidingView
           style={{
@@ -57,6 +65,7 @@ const SignInScreen = () => {
               backgroundColor: '#D1E5F8',
               textAlignVertical: 'center',
             }}
+            onFocus={() => setIsFocusedTextInput(true)}
           />
         </KeyboardAvoidingView>
         <KeyboardAvoidingView
@@ -81,6 +90,7 @@ const SignInScreen = () => {
               backgroundColor: '#D1E5F8',
               textAlignVertical: 'center',
             }}
+            onFocus={() => setIsFocusedTextInput(true)}
           />
         </KeyboardAvoidingView>
 
