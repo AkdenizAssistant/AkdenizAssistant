@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 export default function HeaderBar() {
+  const navigation = useNavigation();
   return (
     <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-      <TouchableOpacity style={styles.menu}>
+      <TouchableOpacity style={styles.menu} onPress={() => navigation.openDrawer()}>
         <Image source={require('../assets/MenuIcon.png')} />
       </TouchableOpacity>
       <Text style={styles.title}>  Akdeniz Asistan</Text>

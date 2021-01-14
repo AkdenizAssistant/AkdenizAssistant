@@ -6,7 +6,10 @@ import RootStackScreen from './screens/RootStackScreen';
 import MainTabScreen from './screens/MainTabScreen';
 import {StyleSheet, Text} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context/src/SafeAreaContext';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {DrawerContent} from './screens/DrawerContent';
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function Router() {
   function LogoTitle() {
@@ -15,8 +18,13 @@ function Router() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
+        <Drawer.Navigator
+          drawerContent={(props) => <DrawerContent {...props} />}>
+          <Drawer.Screen name="Main" component={MainTabScreen} />
+        </Drawer.Navigator>
+
         {/*<RootStackScreen />*/}
-        <MainTabScreen />
+        {/*<MainTabScreen />*/}
       </NavigationContainer>
     </SafeAreaProvider>
   );
