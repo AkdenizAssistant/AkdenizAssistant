@@ -17,8 +17,8 @@ const SignInScreen = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setIsFocusedTextInput(false);
-    }, 50000);
-  }, []);
+    }, 20000);
+  }, [isFocusedTextInput]);
   return (
     //First Part includes logo
     //Second View Part includes input and forgotten password

@@ -8,6 +8,7 @@ import {StyleSheet, Text} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context/src/SafeAreaContext';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {DrawerContent} from './screens/DrawerContent';
+import {AuthContext} from './components/Context';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -15,18 +16,48 @@ function Router() {
   function LogoTitle() {
     return <Text style={styles.title}>Akdeniz Asistan</Text>;
   }
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        {/*<Drawer.Navigator*/}
-        {/*  drawerContent={(props) => <DrawerContent {...props} />}>*/}
-        {/*  <Drawer.Screen name="Main" component={MainTabScreen} />*/}
-        {/*</Drawer.Navigator>*/}
+  const initialState = {
+    isLogin: false,
+  };
+  // const [isLogin, setIsLogin] = React.useState(false);
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'LOGIN':
+        return {
+          ...state,
+          isLogin: true,
+        };
+      case 'LOGOUT':
+        return {
+          ...state,
+          isLogin: false,
+        };
+      default:
+        return state;
+    }
+  };
 
-        <RootStackScreen />
-        {/*<MainTabScreen />*/}
-      </NavigationContainer>
-    </SafeAreaProvider>
+  const value = React.useContext(AuthContext);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+  return (
+    <AuthContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          {state.isLogin ? (
+            <Drawer.Navigator
+              drawerContent={(props) => <DrawerContent {...props} />}>
+              <Drawer.Screen name="Main" component={MainTabScreen} />
+            </Drawer.Navigator>
+          ) : (
+            <RootStackScreen />
+          )}
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </AuthContext.Provider>
   );
 }
 const styles = StyleSheet.create({

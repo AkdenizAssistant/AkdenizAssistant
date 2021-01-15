@@ -9,15 +9,17 @@ import {
   useWindowDimensions,
   KeyboardAvoidingView,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUpScreen = () => {
+  const navigation = useNavigation();
   const windowWidth = useWindowDimensions().width;
   const [isFocusedTextInput, setIsFocusedTextInput] = React.useState(false);
   React.useEffect(() => {
     const interval = setInterval(() => {
       setIsFocusedTextInput(false);
     }, 50000);
-  }, []);
+  }, [isFocusedTextInput]);
   return (
     <View style={styles.container}>
       {isFocusedTextInput ? null : (
@@ -55,13 +57,16 @@ const SignUpScreen = () => {
           onFocus={() => setIsFocusedTextInput(true)}
         />
       </KeyboardAvoidingView>
-      <KeyboardAvoidingView>
-        <TouchableOpacity>
-          <Text onPress={() => {}} style={styles.button}>
-            Giriş Yap
-          </Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+
+      <TouchableOpacity>
+        <Text
+          onPress={() => {
+            navigation.navigate('SignUpActivationScreen');
+          }}
+          style={styles.button}>
+          Kayıt Ol
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -102,21 +107,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 30,
     textAlign: 'center',
-  },
-
-  forgot_button: {
-    height: 30,
-    marginBottom: 30,
-  },
-
-  loginBtn: {
-    width: '80%',
-    borderRadius: 25,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 40,
-    backgroundColor: '#FF1493',
   },
   logo: {
     width: 200,

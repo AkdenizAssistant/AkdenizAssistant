@@ -1,8 +1,10 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 import {Drawer, Text, TouchableRipple, Switch} from 'react-native-paper';
+import {AuthContext} from '../components/Context';
 
 export function DrawerContent(props) {
+  const {dispatch} = React.useContext(AuthContext);
   return (
     <View style={{flex: 1}}>
       <View style={styles.profile}>
@@ -66,7 +68,13 @@ export function DrawerContent(props) {
         </TouchableRipple>
       </View>
       <View style={styles.signout}>
-        <TouchableOpacity style={styles.signoutButton}>
+        <TouchableOpacity
+          style={styles.signoutButton}
+          onPress={() => {
+            dispatch({
+              type: 'LOGOUT',
+            });
+          }}>
           <Text style={styles.signoutText}>Çıkış Yap</Text>
         </TouchableOpacity>
       </View>
