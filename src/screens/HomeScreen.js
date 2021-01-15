@@ -5,9 +5,11 @@ import {
   useWindowDimensions,
   View,
   TouchableOpacity,
+  Alert
 } from 'react-native';
-
+import AwesomeAlert from 'react-native-awesome-alerts';
 const HomeScreen = ({navigation}) => {
+  const AlertMessage = ("           \n             Mevcut Bakiyeniz 16 TL".toString());
   const windowWidth = useWindowDimensions().width;
   return (
     /*First Part*/
@@ -83,7 +85,14 @@ const HomeScreen = ({navigation}) => {
                 textAlign: 'center',
                 textAlignVertical: 'center',
                 justifyContent: 'center',
-              }}>
+              }}
+            onPress={() => Alert.alert(
+              `${AlertMessage}`,
+              "",
+              [],
+              { cancelable: true }
+            ) }
+            >
               <Text
                 style={{
                   fontSize: 20,
