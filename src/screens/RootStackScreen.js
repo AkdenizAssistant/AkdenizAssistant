@@ -5,6 +5,7 @@ import SignInScreen from './SignInScreen';
 import SignUpScreen from './SignUpScreen';
 import SignUpActivationScreen from './SignUpActivationScreen';
 import RememberPasswordScreen from './RememberPasswordScreen';
+import CreatingNewPasswordScreen from "./CreatingNewPasswordScreen";
 
 const RootStack = createStackNavigator();
 const RootStackScreen = ({navigation}) => {
@@ -67,6 +68,26 @@ const RootStackScreen = ({navigation}) => {
         component={RememberPasswordScreen}
         options={{
           title: 'Şifremi Unuttum',
+          headerStyle: {
+            backgroundColor: 'rgba(244, 115, 37, 0.81)',
+            height: 73,
+          },
+          headerTintColor: 'black',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: 'center',
+            justifyContent: 'center',
+            fontFamily: 'Quicksand',
+            fontSize: 27,
+            marginRight: 50,
+          },
+        }}
+      />
+      <RootStack.Screen
+        name="CreatingNewPasswordScreen"
+        component={CreatingNewPasswordScreen}
+        options={{
+          title: 'Şifremi Sıfırla',
           headerStyle: {
             backgroundColor: 'rgba(244, 115, 37, 0.81)',
             height: 73,

@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47325',
     width: 184,
     alignItems: 'center',
-    fontWeight: 'bold',
     marginTop: 10,
+    fontFamily: 'Quicksand',
   },
   keyboard: {
     width: 300,
