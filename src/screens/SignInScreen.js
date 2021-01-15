@@ -100,7 +100,9 @@ const SignInScreen = () => {
         </KeyboardAvoidingView>
 
         <TouchableOpacity
-          onPress={onPress()}
+          onPress={() => {
+            navigation.navigate('RememberPasswordScreen');
+          }}
           style={{
             alignItems: 'center',
             width: windowWidth / 2,
