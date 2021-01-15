@@ -15,11 +15,12 @@ const SignUpScreen = () => {
   const navigation = useNavigation();
   const windowWidth = useWindowDimensions().width;
   const [isFocusedTextInput, setIsFocusedTextInput] = React.useState(false);
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFocusedTextInput(false);
-    }, 50000);
-  }, [isFocusedTextInput]);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setIsFocusedTextInput(false);
+  //     return () => clearInterval(interval);
+  //   }, 50000);
+  // }, []);
   return (
     <View style={styles.container}>
       {isFocusedTextInput ? null : (
@@ -27,9 +28,13 @@ const SignUpScreen = () => {
           <Image style={styles.logo} source={require('../assets/logo.png')} />
         </View>
       )}
-      <TouchableOpacity style={styles.textInfo}>
-        <Text>Kayıtlı Hesabın varsa </Text>
-        <Text style={{fontWeight: 'bold'}}>giriş yap</Text>
+      <TouchableOpacity
+        style={styles.textInfo}
+        onPress={() => {
+          navigation.navigate('SignInScreen');
+        }}>
+        <Text style={{fontSize: 18}}>Kayıtlı Hesabın varsa </Text>
+        <Text style={{fontWeight: 'bold', fontSize: 18}}>giriş yap</Text>
       </TouchableOpacity>
       <KeyboardAvoidingView style={styles.keyboard}>
         <TextInput

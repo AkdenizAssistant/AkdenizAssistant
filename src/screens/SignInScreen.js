@@ -10,15 +10,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../components/Context';
 const SignInScreen = () => {
   const windowWidth = useWindowDimensions().width;
+  const navigation = useNavigation();
+  const {dispatch} = React.useContext(AuthContext);
   const onPress = () => {};
   const [isFocusedTextInput, setIsFocusedTextInput] = React.useState(false);
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFocusedTextInput(false);
-    }, 20000);
-  }, [isFocusedTextInput]);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setIsFocusedTextInput(false);
+  //     return () => clearInterval(interval);
+  //   }, 20000);
+  // }, []);
   return (
     //First Part includes logo
     //Second View Part includes input and forgotten password
@@ -120,7 +125,11 @@ const SignInScreen = () => {
           }}>
           <TouchableOpacity>
             <Text
-              onPress={onPress()}
+              onPress={() => {
+                dispatch({
+                  type: 'LOGIN',
+                });
+              }}
               style={{
                 fontSize: 30,
                 textAlign: 'center',
@@ -166,7 +175,10 @@ const SignInScreen = () => {
             }}>
             Kaydınız Yok Mu?
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SignUpScreen');
+            }}>
             <Text style={styles.signUp}> Kaydol </Text>
           </TouchableOpacity>
         </View>

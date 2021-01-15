@@ -6,14 +6,12 @@ import SignUpScreen from './SignUpScreen';
 import SignUpActivationScreen from './SignUpActivationScreen';
 
 const RootStack = createStackNavigator();
-
 const RootStackScreen = ({navigation}) => {
   function LogoTitle() {
     return <Text style={styles.title}>Akdeniz Asistan</Text>;
   }
-
   return (
-    <RootStack.Navigator headerMode="screen" initialRouteName="SignUpScreen">
+    <RootStack.Navigator headerMode="screen" initialRouteName="SignInScreen">
       <RootStack.Screen
         name="SignInScreen"
         component={SignInScreen}
@@ -39,10 +37,7 @@ const RootStackScreen = ({navigation}) => {
             backgroundColor: 'rgba(244, 115, 37, 0.81)',
             height: 73,
           },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
+          headerLeft: null,
           headerTitle: (props) => <LogoTitle {...props} />,
         }}
       />
@@ -61,7 +56,7 @@ const RootStackScreen = ({navigation}) => {
             textAlign: 'center',
             justifyContent: 'center',
             fontFamily: 'Quicksand',
-            fontSize: 42,
+            fontSize: 35,
             marginRight: 50,
           },
         }}

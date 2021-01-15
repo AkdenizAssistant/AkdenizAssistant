@@ -17,11 +17,7 @@ const SignUpActivationScreen = () => {
   const navigation = useNavigation();
   const windowWidth = useWindowDimensions().width;
   const [isFocusedTextInput, setIsFocusedTextInput] = React.useState(false);
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFocusedTextInput(false);
-    }, 50000);
-  }, [isFocusedTextInput]);
+
   return (
     <View style={styles.container}>
       {isFocusedTextInput ? null : (
