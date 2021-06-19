@@ -1,5 +1,5 @@
 # Akdeniz Assistant
-* It is designed as a assistant for helping people which living Akdeniz Campus using  React-Native.
+* It is developed as a assistant for helping people which living Akdeniz Campus using React-Native.
 * It is a just a mobile app that is created as a User Interface not backend.
 * I have developed according to designed user interface that is befored.
 
